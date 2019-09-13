@@ -8,7 +8,13 @@ namespace DriverAllocation
         public AllocationEngine()
         {
         }
-
+        /// <summary>
+        /// The function to get Drivers allocated for a given order
+        /// </summary>
+        /// <param name="restaurantAddress">The address of the restaurant in the order</param>
+        /// <param name="consumerAddress">The address of the consumer in the order</param>
+        /// <param name="favailableDrivers">List of available drivers</param>
+        /// <returns></returns>
         public static List<Driver> DoAllocation(Address restaurantAddress, Address  consumerAddress, List<Driver> favailableDrivers)
         {
             List<Driver> selectedDrivers = new List<Driver>();
@@ -37,12 +43,12 @@ namespace DriverAllocation
         }
 
         /// <summary>
-        /// The funtion to get Drivers allocated
+        /// Deprecated - The funtion to get Drivers allocated
         /// </summary>
         /// <param name="fOrder">The order for which allocation to be done</param>
         /// <param name="favailableDrivers">List of available drivers</param>
         /// <returns></returns>
-        public static List<Driver> AllocateDrivers(Order fOrder, List<Driver> favailableDrivers)
+        /*public static List<Driver> AllocateDrivers(Order fOrder, List<Driver> favailableDrivers)
         {
             List<Driver> selectedDrivers = new List<Driver>();
             Driver selectedDriver = null;
@@ -67,7 +73,7 @@ namespace DriverAllocation
             if (selectedDriver != null) selectedDrivers.Add(selectedDriver);  
             return selectedDrivers;
            
-        }
+        }*/
 
         /// <summary>
         /// Find the total distance between driver to restaurant to consumer location
