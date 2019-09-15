@@ -8,87 +8,29 @@ namespace DriverAllocation
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello Fuddy!");
-            Order testorder = GetTestOrder();
-            
-            Console.WriteLine("Allocating drivers to Order" + testorder.DummyOrderDetails);
+            Console.WriteLine("Hello Foody!");
 
-            List<Driver> testDrivers = GetTestDrivers();
-
-            //List<Driver> selectedDrivers  = AllocationEngine.AllocateDrivers(testorder, testDrivers);
-            List<Driver> selectedDrivers = AllocationEngine.DoAllocation(testorder.consumer.address, testorder.restaurant.address, testDrivers);
-            //for now we expect only one driver in the list
-            if (selectedDrivers != null && selectedDrivers.Count > 0)
+            try
             {
-                Console.WriteLine("Selected Driver is " + selectedDrivers[0].name);
+                //test the basic compare between 2 given drivers based on the parameters
+                //this test function will retrieve and run various test cases as defined in the testcaseservice module for this
+                AllocationTester.TestDriverComparison();
+
+                //test the overall allocation logic
+                //this test function will retrieve and run various test cases as defined in the testcaseservice module
+                //to test sequence of orders against a given driver list
+                AllocationTester.TestBetterAllocationVariations();
+
+                //test the overall allocation logic
+                //this test function will retrieve and run various test cases as defined in the testcaseservice module
+                //to test driver list variations against a given order
+                AllocationTester.TestBetterAllocationDriverListVariations();  
             }
-            else
+            catch (Exception testException)
             {
-                Console.WriteLine("No driver selected??!!"); 
+                Console.WriteLine("\nTest Exception " + testException.Message);
+                Console.WriteLine("\n***********************\nTest case execution failed!!!\n\n****************************"); 
             }
-             
-        }
-
-        public static Order GetTestOrder()
-        {
-            Order testOrder = new Order();
-            testOrder.DummyOrderDetails = "1 Medium Pizza; INR 350";
-
-            //assign a test customer
-            testOrder.consumer = new Consumer();
-            testOrder.consumer.name = "Forrest";
-            testOrder.consumer.address = new Address
-            {
-                addressString = "210, httpd square",
-                x = 10,
-                y = 10
-            };
-
-            //assign a test Restaurant
-            testOrder.restaurant  = new Restaurant();
-            testOrder.restaurant.name = "Pizza King";
-            testOrder.restaurant.address = new Address
-            {
-                addressString = "220, abcd Drive",
-                x = 20,
-                y = 20
-            };
-
-
-            return testOrder;
-        }
-
-        public static List<Driver> GetTestDrivers()
-        {
-            List<Driver> testDriverList = new List<Driver>();
-
-            Driver d = new Driver();
-            d.name = "James";
-            d.address = new Address();
-            d.address.addressString = "MI6 square";
-            d.address.x = 35;
-            d.address.y = 20;
-
-            testDriverList.Add(d);
-            d = new Driver();
-            d.name = "Bruce";
-            d.address = new Address();
-            d.address.addressString = "Cave Drive";
-            d.address.x = 25;
-            d.address.y = 20;
-
-            testDriverList.Add(d);
-
-            
-            d = new Driver();
-            d.name = "Ethan";
-            d.address = new Address();
-            d.address.addressString = "impossible square";
-            d.address.x = 22;
-            d.address.y = 20;
-            testDriverList.Add(d);
-
-            return testDriverList;
-        }
+       }
     }
 }
