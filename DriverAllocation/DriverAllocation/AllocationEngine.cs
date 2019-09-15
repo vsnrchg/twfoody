@@ -88,9 +88,11 @@ namespace DriverAllocation
                 }
                 //END OF - apply the better heuristics
 
-                //START - default logic as backup in case no one available who can reach within the food preperation time, then
+                //START - default logic from exercise-1 as backup in case no one available who can reach within the food preperation time, then
                 //at present to demonstrate defaulting to basic logic that whoever is nearest is allocated at least
                 //can change this later to beter logic with a geo-fence applied on how away they are to the restaurant
+                //or to decide based on ratings or orders if more than one are exactly at the same distance from restaurant...
+                ///...that will be similar to what's done above in exercise-2
                 //less expensive to do this default logic in this same loop as all required params are available here, hence the trade off to do it here
                 if (tripDetails.durationMinutes  < duration)
                 {
