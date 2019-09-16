@@ -2,6 +2,8 @@
 Note - Solution for exercise-2 is in "AllocationEngine.DoBetterAllocation()" . This also will by-default apply the basic algo of exercise-1 in case it does not find any drivers who are available within the preparation time. Pls. refer Main()  in Program.cs for the test entry points and to follow the flow. Some functions and nested classes in AllocationEngine could ideally be private - retaining them as public for now for ease of calling for the current test purpose. Can be refactored later.   
 
 # Driver allocation logic
+Do one pass of the driver list and do the following
+
 - Filter drivers who can each the restaurant within the order prep time
 
 - Within the filtered drivers, assign to the person with the least orders
